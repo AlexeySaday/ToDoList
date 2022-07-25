@@ -1,0 +1,104 @@
+﻿ 
+.navbar{
+    width:100%;
+    height:70px;
+    box-shadow:0 4px 10px rgba(0,0,0,.1);
+
+}
+.navbar .container{
+    height:inherit;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+.navbar-menu{
+    list-style-type:none;
+    margin-left:0;
+    margin-bottom:0;
+}
+.navbar-menu li{
+    display:inline-block;
+}
+.navbar-menu li a{
+    display:inline-block;
+    color:black;
+    opacity:0.6;
+    text-decoration:none;
+    padding:10px;
+    transition: all .07s ease-in-out;
+}
+.navbar-menu li a:hover{
+    opacity:1; 
+}
+.navbar-wrap{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-flow:row nowrap;
+}
+.exit{ 
+    padding:10px 30px;
+     
+    background-color:cornflowerblue;
+    border-radius:100px;
+    color:black;
+    text-decoration:none;
+     
+}
+.exit:hover{
+    transform:scale(1.04);
+}
+.container-add { 
+    max-width:900px;
+    margin:0px auto; 
+    margin-top:20px;
+}
+.container-add .textarea{ 
+    width:100%;
+    resize:vertical;
+    padding:15px;
+    border-radius:15px;
+    border:0;
+    box-shadow:4px 4px 10px rgba(0,0,0,0.06); 
+ }
+.container-add .label{
+    font-family:sans-serif;
+    font-size:medium;
+} 
+.container-todo { 
+    position:relative;
+    margin-bottom: 10px;
+    margin-top: 40px;
+    max-width: 1400px;
+    margin: 10px auto;
+    border: 1px solid black;
+    border-radius: 30px;
+}
+.container-todo .overdue {
+    margin-left:30px;   
+}
+.btn-done { 
+    text-align:left;
+    text-decoration:none;
+    color:green;
+}
+.btn-delete{
+    text-align:right;
+    padding-right:10px;
+    text-decoration:none;
+    color:darkred;
+    z-index:1;
+}
+.well-done {
+    background-color:greenyellow;
+    position:absolute; 
+    font-size:xxx-large;
+    top: 50%;
+    left: 40%;
+    border-radius: 30px;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.7;
+    width: 80%;
+}
+ 

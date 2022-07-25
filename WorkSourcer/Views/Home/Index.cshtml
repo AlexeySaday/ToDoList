@@ -1,0 +1,68 @@
+﻿@{
+    ViewData["Title"] = "Мой день";
+    Layout = "_Layout";
+}
+ 
+<div style="text-decoration:none">
+    @{
+        bool flag = true;
+        @foreach (ToDo e in Model)
+            if (e.IsDone || e.RunTime < DateTime.Now)
+                flag = false;
+    }
+    @if(!flag)
+            {
+                <a   asp-controller="Home" asp-action="Index" asp-route-flag="@true">Только актуальные дела</a>
+            }
+            else
+            {
+                <a   asp-controller="Home" asp-action="Index" asp-route-flag="@false">Все дела</a>
+            }
+
+
+</div>
+    @foreach (ToDo e in Model)
+    {
+<div class="container-todo">
+    @if (e.RunTime < DateTime.Now)
+    {
+        <div style="display:flex;align-items:center;justify-content:space-between"> 
+            <div class="overdue">
+                <p style="font-size:25px; text-decoration:line-through"><span>@e.Description</span></p>
+                <del>Время: @e.RunTime.ToString("HH:mm")</del>
+                <b>Просрочено</b>
+            </div>
+            <div><a class="btn-delete" asp-controller="Home" asp-action="Delete" asp-route-Id="@e.Id">Удалить</a></div>
+
+        </div>
+    }
+    else if (!e.IsDone)
+    {
+        <div style="display:flex;align-items:center;justify-content:space-between">
+            <div style="justify-content:start;display:flex;align-items:center;">
+                <div><a asp-controller="Home" asp-action="IsDone" asp-route-Id="@e.Id" class="btn-done">Сделано</a></div>
+                <div class="done-wrap">
+                    <p style="font-size:25px;"><span>@e.Description</span></p>
+                    <i>Время: @e.RunTime.ToString("HH:mm")</i>
+                </div>
+            </div>
+            <div><a class="btn-delete" asp-controller="Home" asp-action="Delete" asp-route-Id="@e.Id">Удалить</a></div>
+        </div>
+    }
+    else
+    {
+        <div class="well-done">Сделано</div>
+        <div style="display:flex;align-items:center;justify-content:space-between"> 
+            <div style="margin-left:30px;">
+                <p style="font-size:25px;">@e.Description</p>
+                <i>Время: @e.RunTime.ToString("HH:mm")</i>
+            </div>
+            <div><a class="btn-delete" asp-controller="Home" asp-action="Delete" asp-route-Id="@e.Id">Удалить</a></div>
+        </div>
+    }
+
+
+</div>
+     
+    }
+ 

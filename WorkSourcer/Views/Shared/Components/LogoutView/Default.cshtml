@@ -1,0 +1,34 @@
+﻿@if(User.Identity.IsAuthenticated)
+{
+ <nav class="navbar">
+     <div class="container">
+         @*<div class="navbar-wrap">*@
+             <ul class="navbar-menu">
+                 <li><a href="/Home/Index">Мой день</a></li>
+                 <li><a href="/Home/Add">Добавить</a></li>
+                 <li><a href="/Home/Calender">Календарь</a></li>
+             </ul>
+             <form class="exit" method="post" asp-controller="Account" asp-action="Logout" id="logoutform" asp-antiforgery="true">
+                 <a style="color:black"  href="#" onclick="document.getElementById('logoutform').submit()">Выход</a>
+             </form>
+         @*</div>*@
+     </div>
+ </nav>
+@*<header> 
+    <form method="post" asp-controller="Account" asp-action="Logout" id="logoutform" asp-antiforgery="true">
+        <a href="#" onclick="document.getElementById('logoutform').submit()">Выход</a>
+    </form> 
+    <ul>
+        <li><a href="#">Мой день</a></li>
+        <li><a href="#">Добавить</a></li>
+        <li><a href="#">Календарь</a></li>
+    </ul>
+</header>*@  
+
+}
+@*else { 
+<div class="btn-group pull-right">
+    <a class="navbar-brand" href="/Account/Login">Вход</a>
+    <a class="navbar-brand" href="/Account/Register">Регистрация </a>
+</div>
+}*@

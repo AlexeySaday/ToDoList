@@ -1,0 +1,65 @@
+﻿@{ 
+    ViewData["Title"] = "Добавление";
+    Layout = "_Layout";
+}
+<form action="~/Home/GetDataFromView" method="post" name="adder">
+    <div class="container-add">
+        <p>
+            <label class="label">Описание</label>
+            <textarea class="textarea" placeholder="To do ..." name="description"></textarea>
+        </p>
+        <p>
+            <label class="label">Дата</label>
+            <input type="button" name="today" value="Сегодня" />
+            <input type="button" name="tomorrow" value="Завтра" />
+            <input type="date" id="date" min="@DateTime.Now.ToString("yyyy-MM-dd")" name="date" />
+            <script>
+                var time = new Date();
+                function printToday() {
+                    var printBlock = document.getElementById('date');
+                    printBlock.value = '@DateTime.Now.ToString("yyyy-MM-dd")';
+                }
+                var todayButton = document.adder.today;
+                todayButton.addEventListener('click', printToday);
+                function printTomorrow(e) {
+                     var printBlock = document.getElementById('date');
+                     printBlock.value='@DateTime.Now.AddDays(1).ToString("yyyy-MM-dd")';
+                }
+                var tomorrowButton = document.adder.tomorrow;
+                tomorrowButton.addEventListener('click', printTomorrow);
+            </script>
+        </p>
+        <p>
+            <label class="label">Время</label>
+            <input type="button" name="morning" value="Утро(7:00)" />
+            <input type="button" name="afternoon" value="День(12:00)" />
+            <input type="button" name="evening" value="Вечер(18:00)" />
+            <input type="time" id="time" name="time" />
+            <script> 
+                function printMorning(e) {
+                    var printBlock = document.getElementById('time');
+                    printBlock.value = '07:00';
+                }
+                function printAfternoon() {
+                    var printBlock = document.getElementById('time');
+                    printBlock.value = '12:00';
+                }
+                function printEvening() {
+                    var printBlock = document.getElementById('time');
+                    printBlock.value = '18:00';
+                }
+                var morningButton = document.adder.morning;
+                morningButton.addEventListener('click', printMorning); 
+                var afternoonButton = document.adder.afternoon;
+                afternoonButton.addEventListener('click', printAfternoon);
+                var eveningButton = document.adder.evening;
+                eveningButton.addEventListener('click', printEvening);
+            </script>
+        </p>
+        <p>
+            <input class="btn btn-secondary btn-lg btn-block" type="submit" value="Добавить" />
+        </p>
+    </div>
+</form>
+ 
+

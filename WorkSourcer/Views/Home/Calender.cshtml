@@ -1,0 +1,46 @@
+﻿@{ 
+    ViewData["Title"] = "Календарь";
+    Layout = "_Layout";
+}
+<form method="post" action="~/Home/Calender">
+    <div style="padding-left: 7rem; padding-top: 1rem; font-size: larger;">
+        <label class="label">Дата</label>
+        <input type="date" min="@DateTime.Now.ToString("yyyy-MM-dd")" name="datetime" />
+        <input type="submit" value="Выбрать" />
+    </div>
+</form>
+@if (Model!=null)
+{
+    @foreach (ToDo e in Model)
+    {
+<div class="container-todo">
+    @if (!e.IsDone)
+    {
+        <div style="display:flex;align-items:center;justify-content:space-between">
+            <div style="justify-content:start;display:flex;align-items:center;">
+                <div><a asp-controller="Home" asp-action="IsDone" asp-route-Id="@e.Id" class="btn-done">Сделано</a></div>
+                <div class="done-wrap">
+                    <p style="font-size:25px;"><span>@e.Description</span></p>
+                    <i>Время: @e.RunTime.ToString("HH:mm")</i>
+                </div>
+            </div>
+            <div><a class="btn-delete" asp-controller="Home" asp-action="Delete" asp-route-Id="@e.Id">Удалить</a></div>
+        </div>
+    }
+    else
+    {
+        <div class="well-done">Сделано</div>
+        <div style="display:flex;align-items:center;justify-content:space-between">
+            <div style="margin-left:30px;">
+                <p style="font-size:25px;">@e.Description</p>
+                <i>Время: @e.RunTime.ToString("HH:mm")</i>
+            </div>
+            <div><a class="btn-delete" asp-controller="Home" asp-action="Delete" asp-route-Id="@e.Id">Удалить</a></div>
+        </div>
+    }
+
+
+</div>
+
+    }
+}
