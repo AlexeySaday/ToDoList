@@ -24,9 +24,9 @@
     @foreach (ToDo e in Model)
     {
 <div class="container-todo">
-    @if (e.RunTime < DateTime.Now)
+    @if (e.RunTime < DateTime.Now && !e.IsDone)
     {
-        <div style="display:flex;align-items:center;justify-content:space-between"> 
+        <div style="display:flex;align-items:center;justify-content:space-between">
             <div class="overdue">
                 <p style="font-size:25px; text-decoration:line-through"><span>@e.Description</span></p>
                 <del>Время: @e.RunTime.ToString("HH:mm")</del>
@@ -36,7 +36,18 @@
 
         </div>
     }
-    else if (!e.IsDone)
+    else if (e.IsDone)
+    {
+        <div class="well-done">Сделано</div>
+        <div style="display:flex;align-items:center;justify-content:space-between">
+            <div style="margin-left:30px;">
+                <p style="font-size:25px;">@e.Description</p>
+                <i>Время: @e.RunTime.ToString("HH:mm")</i>
+            </div>
+            <div><a class="btn-delete" asp-controller="Home" asp-action="Delete" asp-route-Id="@e.Id">Удалить</a></div>
+        </div>
+    }
+    else
     {
         <div style="display:flex;align-items:center;justify-content:space-between">
             <div style="justify-content:start;display:flex;align-items:center;">
@@ -49,18 +60,6 @@
             <div><a class="btn-delete" asp-controller="Home" asp-action="Delete" asp-route-Id="@e.Id">Удалить</a></div>
         </div>
     }
-    else
-    {
-        <div class="well-done">Сделано</div>
-        <div style="display:flex;align-items:center;justify-content:space-between"> 
-            <div style="margin-left:30px;">
-                <p style="font-size:25px;">@e.Description</p>
-                <i>Время: @e.RunTime.ToString("HH:mm")</i>
-            </div>
-            <div><a class="btn-delete" asp-controller="Home" asp-action="Delete" asp-route-Id="@e.Id">Удалить</a></div>
-        </div>
-    }
-
 
 </div>
      
