@@ -1,2 +1,1 @@
-# ToDoList
-ToDo list (Туду лист)
+# Перейдите из main в master 
