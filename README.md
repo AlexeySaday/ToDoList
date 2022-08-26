@@ -19,7 +19,7 @@ ToDo list (Туду лист)
 # Запуск проекта
 Данный проект был написан на Visual Studio 2019. Рекомендую использовать именно его, чтобы не было трудностей при запуске
 ## Как запустить данное веб-приложение на своем устройстве
-1. Кланируйте этот проект, записав `git clone https://github.com/AlexeySaday/ToDoList/tree/master` в терминал 
+1. Кланируйте этот проект, записав `git clone -b "master" https://github.com/AlexeySaday/ToDoList` в терминал 
 2. Теперь нужно установить необходимое NuGet расширение:
   * Microsoft.AspNetCore.Identity.EntityFrameworkCore
   * Microsoft.EntityFrameworkCore.SqlServer
